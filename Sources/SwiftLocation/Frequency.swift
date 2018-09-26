@@ -38,13 +38,14 @@ import CoreLocation
 // MARK: - Extension to CLActivityType
 
 extension CLActivityType: CustomStringConvertible {
-	
+
 	public var description: String {
 		switch self {
 		case .automotiveNavigation:	return "Automotive Navigation"
 		case .fitness:				return "Fitness"
 		case .other:				return "Other"
 		case .otherNavigation:		return "Navigation"
+		case .airborne:				return "Airborne"
 		}
 	}
 }
@@ -64,7 +65,7 @@ public enum Frequency: Equatable, Comparable, CustomStringConvertible {
 	case oneShot
 	case deferredUntil(distance: Double, timeout: TimeInterval, navigation: Bool)
 	case significant
-	
+
 	public var description: String {
 		switch self {
 		case .continuous:
@@ -77,7 +78,7 @@ public enum Frequency: Equatable, Comparable, CustomStringConvertible {
 			return "Significant"
 		}
 	}
-	
+
 	internal var isDeferredFrequency: Bool {
 		switch self {
 		case .deferredUntil(_,_,_):
